@@ -4,8 +4,8 @@
 </head>
 <style>
 img {
-    width: 50%;
-    length: 50%;
+    width: 65%;
+    length: 65%;
 }
 </style>
 
@@ -135,6 +135,15 @@ img {
         </ol>
         <h2>ER Diagram</h2>
         <img src="projectER1.jpg">
+        <p>Assumptions Made:</p>
+		<ul>
+			<li>all users have a unique username, all site urls are unique, all game ids (generated
+                when a game is added to the database) are unique, and each price entry for a
+                specific game has a unique date id</li>
+            <li>each game in database is sold on at least one site</li>
+            <li>likes/dislikes relation has boolean attribute to specify (dis)like</li>
+            <li>each price entry for a specific date is for a unique game</li>
+		</ul>
     </div>
 </body>
 
