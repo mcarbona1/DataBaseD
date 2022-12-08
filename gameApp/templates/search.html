@@ -1,0 +1,21 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        {% if query %}
+			<div class="scrolling-wrapper" id="styled-scrollbars">
+				{% for game in games %}
+					<a href={{ base_url }}/game/{{ game['igdb_id'] }}>
+						<div class="card">
+							<div class="pic-holder">
+								<img class="img-fluid" src={{ game['artwork_url'] }}>
+							</div>
+							<p class="game-name"><b>{{ game['name'].replace("\\\'", "\'") }}</b></p>
+						</div>
+					</a>
+				{% endfor %}		
+			</div>
+        {% endif %}
+    </div>
+{% endblock %}

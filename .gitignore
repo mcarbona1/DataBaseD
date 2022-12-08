@@ -1,0 +1,11 @@
+.env
+.*_session
+**/.*_session
+**/__pycache__
+venvNew
+.vscode
+error.txt
+devplan.html
+**/nohup.out
+**/msrpWork/*.json
+

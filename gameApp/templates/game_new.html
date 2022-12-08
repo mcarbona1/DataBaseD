@@ -1,0 +1,126 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block header %}
+	{{graph | safe}}
+{% endblock %}
+
+{% block content %}
+	<div style="width: 85vw; margin-left: 10vw; margin-right:15vw;">
+		<div class="game_header">
+			<div style="flex: auto;"><h1 class="center">{% block title %}{{ gameName }}{% endblock %}</h1></div>
+			<div style="flex: 50%;"></div>
+			<div class="button_div" style="flex:auto">
+			<form action="/game/{{ id }}" class="btn-group" method="POST">
+				<input type="hidden" value="{{ id }}" name="id">
+				{% if not liked %}
+					<button class = "btn btn-secondary like" name = "command" value="like">Like</button>
+				{% else %}
+					<button class = "btn btn-secondary removeLike" name = "command" value="neutral">Like</button>
+				{% endif %}
+				{% if not disliked %}
+					<button class = "btn btn-secondary dislike" name = "command" value="dislike">Dislike</button>
+				{% else %}
+					<button class = "btn btn-secondary removeDislike" name = "command" value="neutral">Dislike</button>
+				{% endif %}
+				{% if not wishlist %}
+					<button class = "btn btn-secondary wishlist" name = "command" value="addWishlist">Wishlist</button>
+				{% else %}
+					<button class = "btn btn-secondary removeWishlist" name = "command" value="removeWishlist">Wishlist</button>
+				{% endif %}
+			</form></div>
+		</div>
+		<div style="margin-left: 24px">
+			<div style="display: flex; flex-direction: row;">
+				<div style="display: inline-block; margin-right: 20px; background-color: rgba(0, 0, 0, 0.3);">
+					<div style="width: 400px; height: 530px; vertical-align: middle; text-align: center; display: table-cell;">
+						<img src={{ vals['artwork_url'] }} style="width: 400px; max-height: 530px; display: block; margin: 0 auto">
+					</div>
+				</div>
+				<div style="display: flex; flex-direction: column; margin-right: 20px; background-color: rgba(0, 0, 0, 0.3)">
+					<div id="curve_chart" style="width: 500px; height: 300px;"></div>
+					<div style="display: flex; flex-direction: row; width: 500px; padding-top: 20px;">
+						<div style="width: 120px; font-size: 13px; margin-left: 5px;">
+							<p style="margin-bottom:0;">USER SCORE:</p>
+							<p>CRITIC SCORE:</p>
+							<p >RELEASED:</p>
+							<p style="margin-bottom:0;">DEVELOPER:</p>
+							<p>PUBLISHER:</p>
+							<p style="margin-bottom:0;">AGE RATING:</p>
+							<p>GENRES:</p>
+						</div>
+						<div style="width: 380px; font-size: 13px;">
+							<p style="margin-bottom:0;">{% if vals.rating is not none %}{{ vals.rating|round|int ~ "%"}} {{ "(" ~ vals.rating_count ~ ")"}}{% else %}unavailable{% endif %}</p>
+							<p>{% if vals.critic_rating is not none %}{{ vals.critic_rating|round|int ~ "%"}} {{ "(" ~ vals.critic_rating_count ~ ")"}}{% else %}unavailable{% endif %}</p>
+							<p>{% if vals.release_date is not none %}{{ vals.release_date }}{% else %}unavailable{% endif %}</p>
+							<p style="margin-bottom:0;">{% if developers|length > 0 %} {{ developers|join(', ') }}{% else %}unavailable{% endif %}</p>
+							<p>{% if publishers|length > 0 %} {{ publishers|join(', ') }}{% else %}unavailable{% endif %}</p>
+							<p style="margin-bottom:0;">{{ vals.age_rating }}</p>
+							<p>{{vals.genres|join(', ')}}</p>
+						</div>
+					</div>
+				</div>
+				<div style="display: flex; flex-direction: column; background-color: rgba(0, 0, 0, 0.3); width: 260px;">
+					{% for source in source_link %}
+						{% for site, price in msrp %}
+						{% if site == source[0] %}
+						<div style="width:30vw">
+							<a style="color:white; text-decoration: none;" href={{source[1]}}>
+								<div style="display: flex; flex-direction: row; align-items: center; margin-top: 3px; margin-bottom: 3px;">
+									<div style="margin-left: 10px; margin-right: 5px;">
+										{% if site == "Epic Games" %}
+										<img src="{{ url_for('static', filename = 'logos/Epic_Games_logo.svg') }}" alt="Epic Games" style="width:50px;height:50px;">
+										{% elif site == "Steam" %}
+										<img src="{{ url_for('static', filename = 'logos/Steam_logo.svg') }}" alt="Steam" style="width:50px;height:50px;">
+										{% else %}
+										<img src="{{ url_for('static', filename = 'logos/GOG_logo.png') }}" alt="GOG" style="width:50px;height:50px;">
+										{% endif %}
+									</div>
+									{% if price == prices[site][-1][1] %}
+									<div style="color: #e8e8e8; font-size: 2.4vw;">${{price}}</div>
+									{% else %}
+									<div style="background-color: #5ca53a; font-size: 2.4vw; text-decoration: none; margin-right:5px; padding: 2px;">
+										-{{(100 * (1 - (prices[site][-1][1])/price))|round|int}}%
+									</div>
+									<div>
+										<div style="color: #646464; font-size: 1.5vw;">
+											<s>${{price}}</s>
+										</div>
+										<div style="color: #e8e8e8; font-size: 1.5vw;">
+											${{prices[site][-1][1]}}
+										</div>
+									</div>
+									{% endif %}
+								</div>
+							</a>
+						</div>
+						{% endif %}
+						{% endfor %}
+					{% endfor %}
+					{% if vals.related|length > 1 %}
+					<br>
+					<div style="padding-left: 5px">
+						<p style="margin-bottom:0;"><b>RELATED GAMES</b></p>
+						<ul>
+			 				{% for game in vals.related %}
+							<a href={{ base_url }}/game/{{ game[1] }}>
+								<li>{{ game[0] }}</li>
+							</a>
+			 				{% endfor %}
+			 			</ul>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			<div style="display: flex; flex-direction: row; padding-top: 10px">
+				<div style="width: 550px; background-color: rgba(0, 0, 0, 0.3); margin-right: 20px;">
+					<p style="margin-left: 5px;">{{ vals.description }}</p>
+				</div>
+				<div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

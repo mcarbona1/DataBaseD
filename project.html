@@ -1,1 +1,150 @@
-project page
+<html>
+<head>
+	<title> DataBaseD Project Proposal site </title>
+</head>
+<style>
+img {
+    width: 65%;
+    length: 65%;
+}
+</style>
+
+<body>
+    <h1>DataBaseD Project Proposal</h1>
+    <div>
+        <ol>
+            <li>
+                <h4>Description of the application of your choice. State as clearly as possible what
+                    you want to do.</h4>
+                <ul>
+                    <li>Our application will allow users to visualize and compare the trends of the
+                        lowest prices available for a selected video game across several different
+                        distribution services. Not only will it plot those price trends, but it will
+                        also specify for the user which site had that lowest price</li>
+                    <li>Another feature for our application is our video game recommender. For this,
+                        the user will be able to select games that they would like the system to
+                        base its recommendations off of. Our application will then provide the user
+                        with game recommendations that they can either “like” or “dislike”. These
+                        responses will be factored into their future recommendations</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Usefulness. State as clearly as possible why your chosen application is useful.
+                    Make sure to answer the following questions: Are there any similar or equivalent
+                    websites/applications out here? If so, what are they and how are yours
+                    different?</h4>
+                <ul>
+                    <li>Our application is useful because it not only allows the user to know what
+                        site to buy their selected game on, but it also shows them the price trends
+                        so they can decide whether or not to delay their purchase. In addition to
+                        this it can give them recommendations that they can examine the prices of
+                        all on the same site.</li>
+                    <li>Some similar sites are gocdkeys.com (redirects user to cheap site for their
+                        specified game), dlcompare.com (compares current prices for games and
+                        DLC’s), and pricecharting.com (plots game prices for sites one at a
+                        time)</li>
+                    <li>These similar sites fail to fully satisfy our goals since gocdkeys.com and
+                        dlcompare.com do not show past prices and pricecharting.com does not plot
+                        the lowest prices between platforms.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Realness. Describe what your data is and where you will get it.</h4>
+                <ul>
+                    <li>Our data is the titles of video games, the prices (over time), attribute
+                        tags/labels of each video game as offered by the distributors’ APIs and a
+                        description of the game. Another table will include data entered by the user
+                        which includes video games that they played and a rating of how much they
+                        liked it.</li>
+                </ul>
+            </li>
+            <li>
+                <h4>Description of the functionality that you plan to offer. This is where you talk
+                    about how to meet the functionality requirements. There are two types of
+                    functions you need to offer:</h4>
+                <ol>
+                    <li>
+                        <p>Basic Functions: see Stage 4 for what basic functions you need to
+                            offer.</p>
+                        <ul>
+                            <li>
+                                <p>insert/update/delete records</p>
+                            </li>
+                            <ul>
+                                <li>we will scrape prices for the video games daily from
+                                        websites to insert and update records. users will be able to
+                                        add/delete their account and update the password for that
+                                        account. additionally, they will be able to create
+                                        likes/dislikes relations between their account and a game
+                                        when they like or dislike a game.</li>
+                            </ul>
+                            <li>
+                                <p>Show how to search the database and list or print returned
+                                    results. You need to show a few different interesting queries
+                                    over your database. *One of the queries must involve joins of
+                                    multiple tables.*</p>
+                            </li>
+                            <ul>
+                                <li>Users will be allowed to search our database of prices for
+                                    specific video game titles</li>
+                                <li>Users will be allowed to search the prices of video games that
+                                    our application recommends for them (a join between the prices
+                                    table and the recommendation table)</li>
+                            </ul>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>Advanced Functions:</p>
+                        <ul>
+                            <li>
+                                <p>Remember to include at least two creative things (advanced
+                                    functions), i.e., something that doesn’t exist in equivalent
+                                    websites/applications. The advanced functions should go beyond
+                                    the basic functions listed above; in addition, an advanced
+                                    function should also be something that is technically
+                                    challenging, meaning you would need to spend some significant
+                                    time (at least a few days work) to implement it.</p>
+                            </li>
+                            <ol>
+                                <li>User input for game name will be accepted and whatever option is
+                                    enabled (show platform prices or price history) will be queried
+                                    from the database. That data will be converted to a visual
+                                    format and displayed to the website</li>
+                                <li>User input for the game in which the user played and the rating
+                                    that they give said game. Other information about the game can
+                                    be queried and brought over from the available table of prices
+                                    and brought into the user table.</li>
+                            </ol>
+                            <li>
+                                <p>Make clear what the features are, and explain why you think it is
+                                    cool to have them. If you are unclear, please check the project
+                                    overview lecture or talk to TA.</p>
+                            </li>
+                            <ol>
+                                <li>Allow a user to search for a game and display the current prices
+                                    across all platforms, and allow an option to view price
+                                    trends/history for each of the platforms as well</li>
+                                <li>Users will have an account where they can input which games they
+                                    like, and we will use that data to generate recommendations for
+                                    other games that they may like based on shared attributes</li>
+                            </ol>
+                        </ul>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+        <h2>ER Diagram</h2>
+        <img src="projectER1.jpg">
+        <p>Assumptions Made:</p>
+		<ul>
+			<li>all users have a unique username, all site urls are unique, all game ids (generated
+                when a game is added to the database) are unique, and each price entry for a
+                specific game has a unique date id</li>
+            <li>each game in database is sold on at least one site</li>
+            <li>likes/dislikes relation has boolean attribute to specify (dis)like</li>
+            <li>each price entry for a specific date is for a unique game</li>
+		</ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block title %}ROOST: Signup Page{% endblock %}
+
+{% block content %}
+	<div class="center admin-background">
+		<div class="center text-center">
+			<h2>Sign Up</h2>
+		</div>
+		<form action="/signup" method="POST">
+			<div class="admin">
+				<div class="text-start">
+				<label for="email"><p>Email: </p></label>
+				</div>
+				<div>
+				<input type="search" name="email" id="email"/>
+				</div>
+			</div>
+			<div class="admin">
+				<div class="text-start">
+				<label for="username"><p>Username: </p></label>
+				</div>
+				<div>
+				<input type="search" name="username" id="username"/>
+				</div>
+			</div>
+			<div class="admin">
+				<div class="text-start">
+				<label for="password">Password: </label>
+				</div>
+				<div>
+				<input type="password" name="password" id="password"/>
+				</div>
+			</div>
+			<div class="admin">
+				<div class="text-start">
+				<label for="passwordVerify">Password (Again): </label>
+				</div>
+				<div>
+				<input type="password" name="passwordVerify" id="passwordVerify"/>
+				</div>
+			</div>
+
+			<div class="admin">
+				<button class="btn btn-success" id = "loginButton" value="submit">Signup</button>
+			</div>
+		</form>
+		{% if failed %} 
+			<div class="error text-center">
+				<p>{{ failure_reason }}</p>
+			</div>
+		{% endif %}
+
+	</div>
+{% endblock %}
