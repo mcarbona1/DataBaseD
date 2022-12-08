@@ -1,0 +1,42 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block title %}ROOST: Login Page{% endblock %}
+
+{% block content %}
+	<div class="center admin-background">
+		<div class="center text-center">
+			<h2>Login</h2>
+		</div>
+		<form action="/login" method="POST">
+			<div class="admin">
+				<div class="text-start">
+				<label for="username"><p>Username: </p></label>
+				</div>
+				<div>
+				<input type="search" name="username" id="username"/>
+				</div>
+			</div>
+			<div class="admin">
+				<div class="text-start">
+				<label for="password"><p>Password: </p></label>
+				</div>
+				<div>
+				<input type="password" name="password" id="password"/>
+				</div>
+				<div class="text-end">
+					<p><a href="{{ url_for('signup')}}">signup instead?</a></p>
+				</div>
+			</div>
+			<div class="admin">
+				<button class="btn btn-success" id = "loginButton" value="submit">Login</button>
+			</div>
+		</form>
+		{% if failed %} 
+			<div class="error text-center">
+				<p>Failed to login. Please Try Again!</p>
+			</div>
+		{% endif %}
+
+	</div>
+{% endblock %}

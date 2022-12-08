@@ -1,0 +1,51 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+		{% for name, category in [likes, dislikes, recommendations, wishlist] %}
+		 	<div class="genre-wrapper">
+				<h3>{{ name|capitalize }}</h3>
+				{% if name == recommendations[0] and category | length <= 0%}
+				<h3>You need at least 5 liked Games for Recommendations to work!</h3>
+				{% elif category | length <= 0 %} 
+				<h3>Go to game pages and add them to {{name}} for them to show up here!</h3>
+				{% endif %}
+			</div>
+			<div class="scrolling-wrapper" id="styled-scrollbars">
+				{% if category | length <= 0 %} 
+					<div class="empty"></div>
+				{% endif %}
+				{% for game in category %}
+					<a href="{{ base_url }}/game/{{ game['igdb_id'] }}">
+						<div class="card">
+							<div class="pic-holder">
+								<img class="img-fluid" src="{{ game['artwork_url'] }}">
+							</div>
+							<p class="user_home game-name"><b>{{ game['name'].replace("\\\'", "\'") }}</b></p>
+							<div class="user_home">
+							<form action="/user_home" method="POST" class="wrapper user_home">
+							<div class="btn-group user_home" role="group">
+							<input type="hidden" name="id" value="{{ game['igdb_id'] }}" />
+						{% if name == 'dislikes' or name == 'recommendations' %}
+							<button class = "btn btn-secondary like" name = "command" value="like">Like</button>
+						{% endif %}
+						{% if name == 'likes' or name == 'recommendations' %}
+							<button class = "btn btn-secondary dislike" name = "command" value="dislike">Disike</button>
+						{% endif %}
+						{% if name == 'dislikes' or name == 'likes' %}
+							<button class = "btn btn-secondary remove" name = "command" value="neutral">Remove</button>
+						{% endif %}
+						{% if name == 'wishlist' %}
+							<button class = "btn btn-secondary wishlist" name = "command" value="removeWishlist">Remove</button>
+						{% endif %}
+							</div>
+						</form>
+						</div>
+						</div>
+					</a>
+				{% endfor %}		
+			</div>
+		{% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+		<div style="width: 80%; margin-right: auto; margin-left: auto;">
+			<div class="row" style="padding-top: 16px;">
+				<div class="col-4">
+					<p style="font-size: 20px; text-align: center; color: #ff9800">Find the cheapest listings for the games you love</p>
+					<p>With Roost, there is no longer a need to check multiple sites before buying your next big game. We check prices across your favorite sites every day so you don’t have to!</p>
+				</div>
+				<div class="col-4">
+					<p style="font-size: 20px; text-align: center; color: #ff9800">Stay informed on sales throughout the year</p>
+					<p>When a game on your Roost wishlist goes on sale, we won’t let you miss it! If a sale happens, you’ll know when we know.</p>
+				</div>
+				<div class="col-4">
+					<p style="font-size: 20px; text-align: center; color: #ff9800">Discover new games</p>
+					<p>Is your game library not as fun as it once was? Add a little bit of spice with the help of our recommendation system!"</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="scrolling-wrapper" id="styled-scrollbars">
+			{% for game in sales_games %}
+				<a href={{ base_url }}/game/{{ game['igdb_id'] }}>
+					<div class="card">
+						<div class="pic-holder">
+							<img class="img-fluid" src={{ game['artwork_url'] }}">
+						</div>
+						<p class="game-name"><b>{{ game['name'].replace("\\\'", "\'") }}</b></p>
+					</div>
+				</a>
+			{% endfor %}		
+		</div>
+    </div>
+{% endblock %}

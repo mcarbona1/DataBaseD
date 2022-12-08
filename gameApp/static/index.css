@@ -1,0 +1,451 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap');
+
+/* base style */
+
+* {
+	margin: 0;
+	font-family: "Quicksand";
+}
+
+h1 {
+	color:#e8e9f3;
+	font-family: 'Montserrat', sans-serif;
+	padding: 24px;
+}
+
+h2 {
+	color:#e8e9f3;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(60,9,108,1) 100%, rgba(0,212,255,1) 100%, rgba(40,78,158,1) 100%);
+}
+
+table {
+  border: 1px solid;
+  border-collapse: collapse;
+  border-color: #333333;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+th, td {
+  text-align: left;
+  color: #e8e9f3;
+  border: 1px solid;
+  border-collapse: collapse;
+  border-color: #333333;
+}
+
+input[type=text] {
+	background-color: #e8e9f3;
+	color: #240046;
+	height: 48px;
+}
+
+button {
+	background: rgb(2,0,36);
+	background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(74,65,96,1) 0%, rgba(178,169,184,1) 100%, rgba(200,191,209,1) 100%);
+	color: #e8e9f3;
+	border: none;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	height: 48px;
+}
+
+p {
+	color: #e8e9f3;
+}
+
+a {
+	text-decoration: none;
+	color: #ff6d00;
+}
+
+li {
+	color: #e8e9f3;
+}
+
+form {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 8px;
+}
+
+#mainblock {
+	background: rgb(74,65,96);
+	background: linear-gradient(270deg, rgba(74,65,96,1) 0%, rgba(56,52,59,1) 77%);	
+	border: none;
+	opacity: 0.8;
+	margin-left: 100px;
+	box-shadow: -1px 5px 5px #2a172d;
+	padding-bottom: 8px;
+}
+
+input[type=search] {
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	color: #240046;
+	height: 48px;
+}
+
+input[type=password] {
+	box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+	color: #240046;
+	width: 25%;
+	height: 48px;
+}
+
+#submitButton {
+	margin-left: 2px;
+	border-radius: 0;
+	border: none;
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+	color: #240046;
+	height: 48px;
+}
+
+#loginButton {
+	border-radius: 0;
+	border: none;
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+	color: #240046;
+	height: 48px;
+}
+
+#addtl_info {
+	margin-left: 100px;
+	padding: 8px;
+}
+
+#details {
+	background: rgb(74,65,96);
+	background: linear-gradient(270deg, rgba(74,65,96,1) 0%, rgba(56,52,59,1) 77%);
+	margin: none;
+	height: auto;
+}
+
+#related_games {
+	margin-left: auto;
+	margin-right: auto;
+	background: rgb(2,0,36);
+	background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(74,65,96,1) 0%, rgba(157,147,163,1) 100%, rgba(58,55,61,1) 100%);	
+	box-shadow: -1px 5px 5px #2a172d;
+}
+
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.scrolling-wrapper {
+  	overflow-x: scroll;
+  	overflow-y: hidden;
+  	white-space: nowrap;
+	min-height: 350px;
+  	width: 80%;
+  	margin-left: auto;
+  	margin-right: auto;
+	position: relative;
+}
+
+.scrolling-wrapper div.empty {
+	background: white;
+	opacity: .5;
+	width: 100%;
+	height: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	min-height: 350px;
+}
+
+div.pic-holder {
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 0px; 
+	height: 265px; 
+	width: 100%; 
+	display: flex;
+    justify-content: center;
+}
+
+.pic-holder img {
+	width: 100%;
+	max-height: 265px;
+	margin: auto;
+    display: block;
+	margin-top: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	white-space: normal;
+	font-weight: bold;
+}
+
+.card {
+	background: rgb(2,0,36);
+	background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(74,65,96,1) 0%, rgba(178,169,184,1) 100%, rgba(200,191,209,1) 100%);
+  	height: 350px;
+  	width: 200px;
+	position: relative;
+  	/*padding: 32px;*/
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: none;
+  	display: inline-block;
+	vertical-align: middle;
+}
+
+.game-name {
+	color: #240046;
+	text-align: center;
+	border: none;
+	font-size: 16px;
+	width: 150px;
+	height: fit-content;
+	overflow: break-word;
+	overflow-y: hidden;
+	margin-top: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: auto;
+	white-space: normal;
+	font-weight: bold;
+}
+
+#styled-scrollbars::-webkit-scrollbar {
+	width: 7px; /* Mostly for vertical scrollbars */
+	height: 7px; /* Mostly for horizontal scrollbars */
+}
+#styled-scrollbars::-webkit-scrollbar-thumb { /* Foreground */
+	background: #ff6d00;
+}
+#styled-scrollbars::-webkit-scrollbar-track { /* Background */
+	background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(74,65,96,1) 0%, rgba(178,169,184,1) 100%, rgba(200,191,209,1) 100%);
+}
+
+
+.user_home_btn_group {
+	margin: auto;
+	width: 80%;
+	display: flex;
+}
+
+div.user_home {
+	width: 200px;
+}
+
+.user_home form {
+	padding: 0px;
+}
+
+.genre-wrapper {
+  	width: 80%;
+	height: fit-content;
+  	margin-left: auto;
+  	margin-right: auto;
+	margin-top: 1%;
+	margin-bottom: -1.5%;
+}
+
+.genre-wrapper h3 {
+	color: white;
+}
+
+.user_home button {
+	height: 36px;
+	transition-duration: .2s;
+}
+
+.user_home button.like:hover {
+	background: green;
+}
+
+.user_home button.dislike:hover {
+	background: red;
+}
+
+
+.user_home button.remove:hover {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+}
+
+.user_home button.wishlist:hover {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+}
+
+.user_home.btn-group {
+	margin: auto;
+}
+
+.user_home.game-name {
+	height: 50px;
+	overflow-y: hidden;
+}
+
+
+.admin label {
+	color: white;
+	margin-bottom: -50%;
+	margin-top: 2%;
+}
+
+.admin {
+	width: 100%;
+}
+
+.admin input {
+	width: 100%;
+}
+
+div.admin{
+	max-height: fit-content;
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+.admin-background {
+	background: #3c0963;
+	width: 40%;
+	min-height: 400px;
+	margin-top: 5%;
+}
+
+.admin button {
+	width: 75%;
+	margin-top: 5%;
+	margin-left: 12.5%;
+	margin-right: 12.5%;
+}
+
+div.error {
+	background: red;
+	width: fit-content;
+	margin: auto;
+	margin-top: 30px;
+}
+
+.navbar {
+	padding: 20px;
+	display: flexbox;
+	align-items: center;
+	margin: 0 auto;
+	border-bottom: 1px solid #240046;
+	background-color: #19081c;
+}
+  
+ .navbar div {
+	display: inline-flex;
+}
+
+.navbar-title div {
+	display: inline-flex;
+	align-items: flex-start;
+}
+  
+.navbar input {
+	border: none;
+	width: 400px;
+	background-color: #e8e9f3;
+}
+  
+.navbar p {
+	font-size: 20px;
+	text-align: center;
+	color: #240046;
+}
+  
+.navbar a {
+	color: #240046;
+}
+.navbar button:hover {
+	color: #944910;
+}
+
+.game-page div {
+	display:flex;
+	justify-content:center;
+  	min-height:100vh;
+}
+
+div.game_header {
+	display: flex;
+	flex-direction: row;
+}
+
+.game_header div.button_div {
+	align-self: flex-end;
+	height: 100%;
+}
+
+.button_div .like {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+	height: 36px;
+	transition-duration: .2s;
+}
+.button_div .like:hover {
+	background: green;
+}
+
+.button_div .dislike {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+	height: 36px;
+	transition-duration: .2s;
+}
+.button_div .dislike:hover {
+	background: red;
+}
+
+.button_div .wishlist {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+	height: 36px;
+	transition-duration: .2s;
+}
+.button_div .wishlist:hover {
+	background: rgb(2,0,36);
+	background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(74,65,96,1) 0%, rgba(178,169,184,1) 100%, rgba(200,191,209,1) 100%);
+}
+
+.button_div .removeLike {
+	background: green;
+	height: 36px;
+	transition-duration: .2s;
+}
+.button_div .removeLike:hover {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+}
+
+.button_div .removeDislike {
+	background: red;
+	height: 36px;
+	transition-duration: .2s;
+}
+.button_div .removeDislike:hover {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+}
+
+.button_div .removeWishlist {
+	background: rgb(2,0,36);
+	background: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(74,65,96,1) 0%, rgba(178,169,184,1) 100%, rgba(200,191,209,1) 100%);
+	height: 36px;
+	transition-duration: .2s;
+}
+.button_div .removeWishlist:hover {
+	background: rgb(255,109,0);
+	background: linear-gradient(270deg, rgba(255,109,0,1) 0%, rgba(255,145,0,1) 89%);
+}

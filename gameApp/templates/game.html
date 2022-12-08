@@ -1,0 +1,90 @@
+<!doctype html>
+{% extends 'base.html' %}
+
+{% block header %}
+	<h1 class="center">{% block title %}{{ gameName }}{% endblock %}</h1>
+	{{graph | safe}}
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-3">
+			<img class="img-fluid" src={{ vals['artwork_url'] }} style="width: 500px; padding: 8px;">
+		</div>
+		<div class="col-4">
+				{% for source in source_link %}
+					{% for site, price in msrp %}
+						{% if site == source[0] %}
+						<div style="width:30vw">
+							<a style="color:white; text-decoration: none;" href={{source[1]}}>
+								<div style="display: flex; flex-direction: row; align-items: center; margin-top: 3px; margin-bottom: 3px;">
+									<div style="margin-left: 10px; margin-right: 5px;">
+										{% if site == "Epic Games" %}
+											<img src="{{ url_for('static', filename = 'logos/Epic_Games_logo.svg') }}" alt="Epic Games" style="width:50px;height:50px;">
+										{% elif site == "Steam" %}
+											<img src="{{ url_for('static', filename = 'logos/Steam_logo.svg') }}" alt="Steam" style="width:50px;height:50px;">
+										{% else %}
+											<img src="{{ url_for('static', filename = 'logos/GOG_logo.png') }}" alt="GOG" style="width:50px;height:50px;">
+										{% endif %}
+									</div>
+									{% if price == prices[-1][site][-1][1] %}
+										<div style="color: #e8e8e8; font-size: 2.4vw;">${{price}}</div>
+									{% else %}
+										<div style="background-color: #5ca53a; font-size: 2.4vw; text-decoration: none; margin-right:5px; padding: 2px;">
+											-{{(100 * (1 - (prices[-1][site][-1][1])/price))|round|int}}%
+										</div>
+										<div>
+											<div style="color: #646464; font-size: 1.5vw;">
+												<s>${{price}}</s>
+											</div>
+											<div style="color: #e8e8e8; font-size: 1.5vw;">
+												${{prices[-1][site][-1][1]}}
+											</div>
+										</div>
+									{% endif %}
+								</div>
+							</a>
+						</div>
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			<p>User Review Score: {{ vals.rating }}</p>
+			<p>Critic Review Score: {{ vals.critic_rating }}</p>
+            <p>Released: {{ vals.release_date }}</p>
+            <p>Released Price: {{ msrp[0][1] }}</p>
+			{% if vals.companies %}
+				<p>Made by:</p>
+			{% endif %}
+            {% for company in vals.companies %}
+                <li>{{ company[0] }}{% if company[1] == 1 %}, Developer{% endif %}{% if company[2] == 1 %}, Publisher{% endif %}</li>
+            {% endfor %}
+		</div>
+		<div class="col-4">
+			<div id="curve_chart" style="width: 500px; height: 300px"></div>
+			<p>{{ vals.description }}</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-4">
+			<p><b>RELATED GAMES</b></p>
+			<ul>
+			 {% for game in vals.related %}
+				<a href={{ base_url }}/game/{{ game[1] }}>
+					<li>{{ game[0] }}</li>
+				</a>
+			 {% endfor %}
+			 </ul>
+		</div>
+		<div class="col-4">
+			<p><b>OTHER INFO</b></p>
+			<p>Age Rating: {{ vals.age_rating }}</p>
+            <p>Genres:</p>
+            <ul>
+				{% for genre in vals.genres %}
+					<li>{{ genre }}</li>
+				{% endfor %}
+            </ul>
+		</div>
+	</div>
+
+{% endblock %}
